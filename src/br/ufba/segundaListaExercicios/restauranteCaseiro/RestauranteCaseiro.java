@@ -29,13 +29,33 @@ public class RestauranteCaseiro {
     }
 
     public void excluirMesa(int numeroMesa) {
+        int indice = 0;
 
-        for (int i = 0; i < this.mesas.length; i++) {
-            if (this.mesas[i].obterNumeroMesa() == numeroMesa) {
-                // TODO
+        MesaDeRestaurante[] mesasExistentes = this.mesas.clone();
+        this.mesas = new MesaDeRestaurante[this.mesas.length - 1];
+
+        while (indice < this.mesas.length) {
+
+            if (mesasExistentes[indice].obterNumeroMesa() != numeroMesa) {
+                this.mesas[indice] = mesasExistentes[indice];
+                System.out.println("Indice: " + indice);
+                System.out.println("Mesa adicionada: " + this.mesas[indice].obterNumeroMesa());
+                System.out.println("Mesa esperada: " + mesasExistentes[indice].obterNumeroMesa());
+            } else {
+                quantidadeMesas--;
+                System.out.println("ACHEI A MESA " + numeroMesa + "! Agora temos " + quantidadeMesas);
+                break;
             }
+            indice++;
         }
-        quantidadeMesas--;
+
+    }
+
+    public void obterDetalhesMesas() {
+        for (int i = 0; i < this.mesas.length; i++) {
+            System.out.println("Número da mesa: " + this.mesas[i].obterNumeroMesa());
+            System.out.println("Total gasto: R$ " + this.mesas[i].calcularTotal());
+        }
     }
 
     public void fazerPedido(Item pedido) {
