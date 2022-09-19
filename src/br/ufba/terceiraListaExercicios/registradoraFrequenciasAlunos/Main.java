@@ -35,6 +35,11 @@ class Main {
         diarioRegistros.exibirPresencasEFaltas(maria, poo);
         diarioRegistros.exibirPresencasEFaltas(maria, matematicaDiscreta); // Maria não está na turma de Discreta
 
+        diarioRegistros.exibirAlunosMatriculadosNaTurma(poo);
+        diarioRegistros.exibirAlunosMatriculadosNaTurma(matematicaDiscreta);
+
+        diarioRegistros.sair();
+
 
     }
 }

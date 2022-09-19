@@ -60,9 +60,9 @@ public class DiarioRegistros {
     }
 
     public Turma obterTurma(String nomeTurma) {
-        for (int i = 0; i < turmasRegistradas.length; i++) {
-            turmasRegistradas[i].getNomeDisciplina().equals(nomeTurma);
-            return turmasRegistradas[i];
+        for (Turma turmasRegistrada : turmasRegistradas) {
+            turmasRegistrada.getNomeDisciplina().equals(nomeTurma);
+            return turmasRegistrada;
         }
         return null;
     }
@@ -116,7 +116,7 @@ public class DiarioRegistros {
         return registroNota;
     }
 
-    public RegistroFrequencia registrarFrequencia(Aluno aluno, DiaAula diaAula, boolean presenca) {
+    public void registrarFrequencia(Aluno aluno, DiaAula diaAula, boolean presenca) {
         RegistroFrequencia registroFrequencia = new RegistroFrequencia(aluno, diaAula, presenca);
 
         if (this.frequenciasRegistradas == null) {
@@ -139,15 +139,14 @@ public class DiarioRegistros {
                 }
             }
         }
-        return registroFrequencia;
     }
 
     public void filtrarAlunosPresentes(DiaAula diaAula) {
         System.out.println("========== ALUNOS PRESENTES NA AULA DE " + diaAula.getTurma().getNomeDisciplina() + " ==========");
-        for (int i = 0; i < frequenciasRegistradas.length; i++) {
-            if (diaAula.equals(this.frequenciasRegistradas[i].getDiaAula())) {
-                if (this.frequenciasRegistradas[i].isPresenca())
-                    System.out.println(this.frequenciasRegistradas[i].getAluno().getNome());
+        for (RegistroFrequencia frequenciasRegistrada : frequenciasRegistradas) {
+            if (diaAula.equals(frequenciasRegistrada.getDiaAula())) {
+                if (frequenciasRegistrada.isPresenca())
+                    System.out.println(frequenciasRegistrada.getAluno().getNome());
             }
         }
     }
@@ -157,11 +156,11 @@ public class DiarioRegistros {
         int faltas = 0;
         int presencas = 0;
 
-        for (int i = 0; i < this.frequenciasRegistradas.length; i++) {
-            if (this.frequenciasRegistradas[i].getAluno().getMatricula() == aluno.getMatricula()
-                    && this.frequenciasRegistradas[i].getAluno().getNome().equals(aluno.getNome())
-                    && this.frequenciasRegistradas[i].getDiaAula().getTurma().getNomeDisciplina().equals(turma.getNomeDisciplina())) {
-                if (this.frequenciasRegistradas[i].isPresenca()) {
+        for (RegistroFrequencia frequenciasRegistrada : this.frequenciasRegistradas) {
+            if (frequenciasRegistrada.getAluno().getMatricula() == aluno.getMatricula()
+                    && frequenciasRegistrada.getAluno().getNome().equals(aluno.getNome())
+                    && frequenciasRegistrada.getDiaAula().getTurma().getNomeDisciplina().equals(turma.getNomeDisciplina())) {
+                if (frequenciasRegistrada.isPresenca()) {
                     presencas++;
                 } else {
                     faltas++;
@@ -182,17 +181,32 @@ public class DiarioRegistros {
     }
 
     public void exibirAlunosMatriculadosNaTurma(Turma turma) {
+
+        Aluno[] alunos = new Aluno[this.frequenciasRegistradas.length];
+
+        System.out.println("========== ALUNOS MATRICULADOS EM " + turma.getNomeDisciplina() + " ==========");
         for (int i = 0; i < this.frequenciasRegistradas.length; i++) {
-            if (this.frequenciasRegistradas[i].getDiaAula().getTurma().getCodigoTurma() == turma.getCodigoTurma()) {
-                System.out.println(this.frequenciasRegistradas[i].getAluno().getNome());
+            if (this.frequenciasRegistradas[i].getDiaAula().getTurma().getNomeDisciplina().equals(turma.getNomeDisciplina())) {
+                if (i == 0) {
+                    alunos[i] = this.frequenciasRegistradas[i].getAluno();
+                } else if (this.frequenciasRegistradas[i].getAluno() == alunos[i - 1]) {
+                    continue;
+                } else {
+                    alunos[i] = this.frequenciasRegistradas[i].getAluno();
+                }
             }
+        }
+
+        for (Aluno aluno : alunos) {
+            if (aluno != null)
+                System.out.println(aluno.getNome());
         }
     }
 
     public void listarTurmas() {
         System.out.println("========================== TURMAS CADASTRADAS ==========================");
-        for (int i = 0; i < this.turmasRegistradas.length; i++) {
-            System.out.println("* " + this.turmasRegistradas[i].getNomeDisciplina());
+        for (Turma turmasRegistrada : this.turmasRegistradas) {
+            System.out.println("* " + turmasRegistrada.getNomeDisciplina());
         }
         System.out.println("======================== FIM DA LISTA DE TURMAS ========================");
     }
@@ -203,9 +217,9 @@ public class DiarioRegistros {
 
     public void listarNotasAlunoPorTurma(Aluno aluno, Turma turma) {
         System.out.println("========== NOTAS DE " + aluno.getNome() + " EM " + turma.getNomeDisciplina() + " ==========");
-        for (int i = 0; i < this.notasRegistradas.length; i++) {
-            if (notasRegistradas[i].getAluno().equals(aluno) && notasRegistradas[i].getTurma().equals(turma)) {
-                System.out.println("Nota: " + notasRegistradas[i].getNota());
+        for (RegistroNotas notasRegistrada : this.notasRegistradas) {
+            if (notasRegistrada.getAluno().equals(aluno) && notasRegistrada.getTurma().equals(turma)) {
+                System.out.println("Nota: " + notasRegistrada.getNota());
             }
         }
     }
