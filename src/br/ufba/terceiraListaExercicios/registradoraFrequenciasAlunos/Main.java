@@ -18,10 +18,12 @@ class Main {
         DiaAula diaAula_002 = diarioRegistros.registrarDiaAula("15-09-2022", "16h40-18h30", mata55, "Outra matéria");
 
         diarioRegistros.registrarFrequencia(jose, diaAula, false );
-        diarioRegistros.registrarFrequencia(maria, diaAula, true );
-        diarioRegistros.registrarFrequencia(maria, diaAula_002, true );
+        diarioRegistros.registrarFrequencia(jose, diaAula, true);
+        diarioRegistros.registrarFrequencia(jose, diaAula, true);
 
-        diarioRegistros.filtrarAlunosPresentes(diaAula);
+        diarioRegistros.exibirPresencasEFaltas(jose, mata55);
+        diarioRegistros.exibirPresencasEFaltas(maria, mata55);
+
 
 
 

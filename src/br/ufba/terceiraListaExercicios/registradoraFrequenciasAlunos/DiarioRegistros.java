@@ -156,13 +156,27 @@ public class DiarioRegistros {
         }
     }
 
-    public Aluno[] exibirPresencasEFaltas(RegistroFrequencia r, Aluno aluno, Turma turma) {
+    public void exibirPresencasEFaltas(Aluno aluno, Turma turma) {
 
-        boolean faltas[];
-        boolean presencas[];
+        int faltas = 0;
+        int presencas = 0;
 
+        for (int i = 0; i < this.frequenciasRegistradas.length; i++) {
+            if (this.frequenciasRegistradas[i].getAluno().getMatricula() == aluno.getMatricula()
+                    && this.frequenciasRegistradas[i].getAluno().getNome().equals(aluno.getNome())) {
+                if (this.frequenciasRegistradas[i].getDiaAula().getTurma().getCodigoTurma() == turma.getCodigoTurma()) {
+                    if (this.frequenciasRegistradas[i].isPresenca()) {
+                        presencas++;
+                    } else {
+                        faltas++;
+                    }
+                }
+            }
+        }
 
-        return new Aluno[0]; // TODO
+        System.out.println("Faltas: " + faltas);
+        System.out.println("Presencas: " + presencas);
+
     }
 
     public void exibirNotaAlunoPorTurma(Aluno aluno, Turma turma) {
