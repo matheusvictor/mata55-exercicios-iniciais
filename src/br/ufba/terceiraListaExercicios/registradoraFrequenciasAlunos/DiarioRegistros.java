@@ -187,20 +187,29 @@ public class DiarioRegistros {
         return new Aluno[0]; // TODO
     }
 
-    public Turma[] listarTurmas() {
-        return new Turma[0]; // TODO
+    public void listarTurmas() {
+        System.out.println("========================== TURMAS CADASTRADAS ==========================");
+        for (int i = 0; i < this.turmasRegistradas.length; i++) {
+            System.out.println("* " + this.turmasRegistradas[i].getNomeDisciplina());
+        }
     }
 
     public void listarTotalFaltasEPresencaDoAlunoPorTurma() {
         // TODO
     }
 
-    public void listarNotasAlunoPorTurma() {
-        // TODO
+    public void listarNotasAlunoPorTurma(Aluno aluno, Turma turma) {
+        System.out.println("========== NOTAS DE " + aluno.getNome() + " EM " + turma.getNomeDisciplina() + " ==========");
+        for (int i = 0; i < this.notasRegistradas.length; i++) {
+            if (notasRegistradas[i].getAluno().equals(aluno) && notasRegistradas[i].getTurma().equals(turma)) {
+                System.out.println("Nota: " + notasRegistradas[i].getNota());
+            }
+        }
     }
 
     public void sair() {
-        // TODO
+        System.out.println("Programa encerrado!");
+        System.exit(0);
     }
 
 }

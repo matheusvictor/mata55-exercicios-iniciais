@@ -12,4 +12,15 @@ public class RegistroNotas {
         this.turma = turma;
     }
 
+    public double getNota() {
+        return nota;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
 }
