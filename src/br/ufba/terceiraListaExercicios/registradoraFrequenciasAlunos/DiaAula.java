@@ -39,7 +39,5 @@ public class DiaAula {
             return this.getDataAula().equals(((DiaAula) obj).getDataAula()) && this.getHoraAula().equals(((DiaAula) obj).getHoraAula());
         }
         return false;
-
-
     }
 }
