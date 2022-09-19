@@ -6,22 +6,24 @@ class Main {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
-        DiarioRegistros registrosGerais = new DiarioRegistros();
 
-        Aluno lista[] = new Aluno[0];
+        DiarioRegistros diarioRegistros = new DiarioRegistros();
 
-        Aluno maria = new Aluno("Maria", 1, "");
+        Aluno jose = diarioRegistros.registrarAluno("José", "18-09-2022");
+        Aluno maria = diarioRegistros.registrarAluno("Maria", "19-09-2022");
 
-        Turma mata55 = new Turma("POO");
+        Turma mata55 = diarioRegistros.registrarTurma("Programação Orientada a Objetos (MATA55)");
 
-        DiaAula diaAula = new DiaAula("", "", mata55, "");
+        DiaAula diaAula = diarioRegistros.registrarDiaAula("14-09-2022", "18h30-20h20", mata55, "Java");
+        DiaAula diaAula_002 = diarioRegistros.registrarDiaAula("15-09-2022", "16h40-18h30", mata55, "Outra matéria");
 
-        System.out.println(maria.getNome());
-        System.out.println(mata55.getNomeDisciplina() + " " + mata55.getCodigoTurma());
-        System.out.println(diaAula.getDataAula() + " " + diaAula.getHoraAula());
+        diarioRegistros.registrarFrequencia(jose, diaAula, false );
+        diarioRegistros.registrarFrequencia(maria, diaAula, true );
+        diarioRegistros.registrarFrequencia(maria, diaAula_002, true );
 
-        RegistroFrequencia registro = new RegistroFrequencia(maria, diaAula, true);
+        diarioRegistros.filtrarAlunosPresentes(diaAula);
 
-        registrosGerais.filtrarAlunosPresentes(diaAula, mata55, registro);
+
+
     }
 }

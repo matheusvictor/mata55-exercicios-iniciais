@@ -2,13 +2,15 @@ package br.ufba.terceiraListaExercicios.registradoraFrequenciasAlunos;
 
 public class Aluno {
 
+    private int codigoMatricula = 1000;
     private String nome;
     private int matricula;
     private String dataNascimento;
 
-    public Aluno(String nome, int matricula, String dataNascimento) {
+    public Aluno(String nome, String dataNascimento) {
+        codigoMatricula++;
         this.nome = nome;
-        this.matricula = matricula;
+        this.matricula = codigoMatricula;
         this.dataNascimento = dataNascimento;
     }
 

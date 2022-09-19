@@ -32,5 +32,14 @@ public class DiaAula {
         return this.horario;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof DiaAula) {
+            obj = (DiaAula) obj;
+            return this.getDataAula().equals(((DiaAula) obj).getDataAula()) && this.getHoraAula().equals(((DiaAula) obj).getHoraAula());
+        }
+        return false;
 
+
+    }
 }
