@@ -10,7 +10,6 @@ public class Vetor {
     }
 
     public void insert(String conteudo) {
-
         if (this.vetor[indice] == null) {
             this.vetor[indice] = conteudo;
             indice++;
@@ -60,5 +59,13 @@ public class Vetor {
         for (int i = 0; i < this.vetor.length; i++) {
             System.out.println("[" + i + "] -> " + this.vetor[i]);
         }
+    }
+    }
+
+    public static void main(String[] args) {
+        Vetor v = new Vetor(2);
+        Vetor v2 = new Vetor(2);
+        System.out.println(v);
+        System.out.println(v2);
     }
 }
