@@ -3,11 +3,9 @@ package br.ufba.terceiraListaExercicios.vetor;
 public class Vetor {
 
     private String[] vetor;
-    private int tamanhoVetor;
     private static int indice = 0;
 
     public Vetor(int tamanho) {
-        this.tamanhoVetor = tamanho;
         this.vetor = new String[tamanho];
     }
 
@@ -34,11 +32,22 @@ public class Vetor {
 
                 System.out.println("Copiando vetor...");
                 for (int i = 0; i < vetorAuxiliar.length; i++) {
-                   vetor[i] = vetorAuxiliar[i];
+                    vetor[i] = vetorAuxiliar[i];
                 }
             }
         }
 
+    }
+
+    public String get(int index) {
+        if (this.vetor[index] != null) {
+            return this.vetor[index];
+        }
+        return null;
+    }
+
+    public int size() {
+        return (this.vetor.length - 1);
     }
 
     public void print() {

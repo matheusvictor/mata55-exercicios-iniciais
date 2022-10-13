@@ -13,5 +13,9 @@ public class Main {
 
         v.print();
 
+        System.out.println("Tamanho do vetor: " + v.size());
+
+        System.out.println(v.get(5));
+
     }
 }
