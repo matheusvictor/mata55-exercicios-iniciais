@@ -60,7 +60,6 @@ public class Vetor {
             System.out.println("[" + i + "] -> " + this.vetor[i]);
         }
     }
-    }
 
     public static void main(String[] args) {
         Vetor v = new Vetor(2);
