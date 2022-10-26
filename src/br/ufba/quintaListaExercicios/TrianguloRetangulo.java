@@ -7,11 +7,6 @@ public class TrianguloRetangulo extends Triangulo {
     }
 
     @Override
-    public float calcularArea() {
-        return (dimensao_x * dimensao_y) / 2;
-    }
-
-    @Override
     public float calcularPerimetro() {
         return dimensao_x + dimensao_y + (float)getHipotenusa();
     }

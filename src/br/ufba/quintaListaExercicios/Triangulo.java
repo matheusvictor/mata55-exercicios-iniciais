@@ -7,4 +7,9 @@ public abstract class Triangulo extends ObjetoGeometrico {
         super.setNumeroLados(3);
     }
 
+    @Override
+    public float calcularArea() {
+        return (dimensao_x * dimensao_y) / 2;
+    }
+
 }
