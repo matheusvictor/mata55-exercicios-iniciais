@@ -14,7 +14,8 @@ public class Retangulo extends ObjetoGeometrico {
 
     @Override
     public float calcularPerimetro() {
-        return (dimensao_x / 2);
+        float metadeDosLados = (getNumeroLados() / 2.0f);
+        return (dimensao_x * metadeDosLados) + (dimensao_y * metadeDosLados);
     }
 
 }

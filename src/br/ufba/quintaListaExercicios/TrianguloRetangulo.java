@@ -4,7 +4,6 @@ public class TrianguloRetangulo extends Triangulo {
 
     public TrianguloRetangulo(float x, float y) {
         super(x, y);
-        super.setNumeroLados(3);
     }
 
     @Override
@@ -12,9 +11,13 @@ public class TrianguloRetangulo extends Triangulo {
         return (dimensao_x * dimensao_y) / 2;
     }
 
-    // @Override
-    // public float calcularPerimetro() {
-    //   return (dimensao_x / 2);
-    // }
+    @Override
+    public float calcularPerimetro() {
+        return dimensao_x + dimensao_y + (float)getHipotenusa();
+    }
+
+    public double getHipotenusa() {
+        return Math.hypot(dimensao_x, dimensao_y);
+    }
 
 }

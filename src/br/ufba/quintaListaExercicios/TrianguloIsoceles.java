@@ -11,10 +11,10 @@ public class TrianguloIsoceles extends Triangulo {
         return (dimensao_x * dimensao_y) / 2;
     }
 
-    // @Override
-    // public float calcularPerimetro() {
-    //   return (dimensao_x / 2);
-    // }
+    @Override
+    public float calcularPerimetro() {
+        return (2 * dimensao_y) + dimensao_x;
+    }
 
 }
 
