@@ -8,7 +8,6 @@ public class Circulo extends ObjetoGeometrico {
     public Circulo(float x, float y, float r) {
         super(x, y);
         this.raio = r;
-        super.setNumeroLados(-1);
     }
 
     public float getRaio() {
